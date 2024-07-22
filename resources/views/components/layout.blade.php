@@ -19,6 +19,13 @@
     </head>
     <body class="font-sans antialiased">
         <div class="container">
+
+            @session('message')
+                <div class="alert alert-{{session("message_type")}}" role="alert">
+                    {{session('message')}}
+                </div>
+            @endsession
+
             {{ $slot }}
         </div>
     </body>
