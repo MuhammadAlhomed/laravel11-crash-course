@@ -17,7 +17,9 @@
         ])
 
     </head>
-    <body class="font-sans antialiased mx-96">
-        {{ $slot }}
+    <body class="font-sans antialiased">
+        <div class="container">
+            {{ $slot }}
+        </div>
     </body>
 </html>
