@@ -31,7 +31,7 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'note' => ['required', 'string'],
+            'content' => ['required', 'string'],
         ]);
         
         $data['user_id'] = 1;
@@ -63,7 +63,7 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         $data = $request->validate([
-            'note' => ['required', 'string'],
+            'content' => ['required', 'string'],
         ]);
         
         

@@ -7,13 +7,30 @@
                 @method('PUT')
 
                 <label for="content">Note text</label>
-                <textarea class="w-100" name="content" id="content" rows="10" placeholder="Write everything you have in mind to share with the world!">{{$note->content}}</textarea>
+                <div id="editor">
+                    {!! $note->content !!}
+                </div>
 
                 <div class="d-flex justify-content-end gap-1">
                     <a href="{{route('note.index')}}" class="btn btn-danger">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
+            <script>
+                form = document.querySelector('form');
+                form.addEventListener('submit', (event) => {
+                    editorContent = document.querySelector('#editor .ql-editor');
+
+                    node = document.createElement('input');
+
+                    node.setAttribute('type', 'hidden');
+                    node.setAttribute('name', 'content');
+                    node.setAttribute('value', editorContent.innerHTML);
+
+                    console.log(node);
+                    form.appendChild(node);
+                })
+            </script>
         </div>
     </div>
 </x-layout>

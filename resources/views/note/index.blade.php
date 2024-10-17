@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">
-                        {{ Str::words($note->content, 100) }}
+                        {!! Str::words($note->content, 100) !!}
                     </p>
                     <div class="d-flex justify-content-end gap-1">
                         <a href={{route('note.show', $note)}} class="btn btn-primary">View</a>
