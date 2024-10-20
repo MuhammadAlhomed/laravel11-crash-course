@@ -10,7 +10,7 @@
                     
                 </div>
 
-                <div class="d-flex justify-content-end gap-1">
+                <div class="d-flex justify-content-end gap-1 mt-2">
                     <a href="{{route('note.index')}}" class="btn btn-danger">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
