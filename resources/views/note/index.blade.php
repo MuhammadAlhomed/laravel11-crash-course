@@ -6,9 +6,9 @@
             <a href="{{route('note.show', $note)}}"></a>
             <div class="card">
                 <div class="card-body">
-                    <p class="card-text">
+                    <div class="card-text">
                         {!! Str::words($note->content, 100) !!}
-                    </p>
+                    </div>
                     <div class="d-flex justify-content-end gap-1">
                         <a href={{route('note.show', $note)}} class="btn btn-primary">View</a>
                         <a href={{route('note.edit', $note)}} class="btn btn-secondary">Edit</a>
