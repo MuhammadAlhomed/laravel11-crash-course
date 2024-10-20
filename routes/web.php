@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('note', NoteController::class);
+Route::resource('note', NoteController::class)->names('note');
