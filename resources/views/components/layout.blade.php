@@ -21,7 +21,7 @@
         <div class="container">
 
             @session('message')
-                <div class="alert alert-{{session("message_type")}}" role="alert">
+                <div class="alert alert-{{session("message_type") ?? 'success'}}" role="alert">
                     {{session('message')}}
                 </div>
             @endsession
