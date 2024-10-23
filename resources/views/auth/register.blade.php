@@ -1,12 +1,15 @@
 <x-layout>
-    <div class="vh-100 d-flex justify-content-center align-items-sm-center"> 
+    <div class="vh-100 d-flex justify-content-center align-items-sm-center">
         <div class="col-md-4 card p-4">
             <h1 class="h1 justify-text-center">Register new account</h1>
             <form action="/register" method="post">
                 @csrf
                 <div class='mb-3'>
                     <x-form-label for='username'>Username</x-form-label>
-                    <x-form-input name='username' type='text' placeholder='Username' required/>
+                    <div class="input-group">
+                        <span class="input-group-text">@</span>
+                        <x-form-input name='username' type='text' placeholder='username' required/>
+                    </div>
                 </div>
                 <div class='mb-3'>
                     <x-form-label for='email'>Email</x-form-label>
@@ -22,7 +25,7 @@
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-end">
-                        <button type="submit"class="btn btn-primary">Login</button>
+                        <button type="submit"class="btn btn-primary">Register</button>
                     </div>
                 </div>
             </form>
