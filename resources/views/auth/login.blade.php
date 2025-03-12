@@ -18,10 +18,10 @@
                             <input
                                 class="form-check-input"
                                 type="checkbox"
-                                id=""
-                                value="option1"
+                                name="remember"
+                                id="remember"
                             />
-                            <label class="form-check-label" for="">Remember Me</label>
+                            <label class="form-check-label" for="remember">Remember Me</label>
                         </div>
                         <a href="#">I Forgot my Password</a>
                     </div>

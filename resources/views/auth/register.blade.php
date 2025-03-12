@@ -20,8 +20,19 @@
                     <x-form-input name='password' type='password' required/>
                 </div>
                 <div class='mb-3'>
-                    <x-form-label for='confirmPassword'>Confirm Password</x-form-label>
-                    <x-form-input name='confirmPassword' type='password' required/>
+                    <x-form-label for='password_confirmation'>Confirm Password</x-form-label>
+                    <x-form-input name='password_confirmation' type='password' required/>
+                </div>
+                <div class='mb-3'>
+                    <div class="form-check form-check-inline">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="remember"
+                            id="remember"
+                        />
+                        <label class="form-check-label" for="remember">Remember Me</label>
+                    </div>
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-end">

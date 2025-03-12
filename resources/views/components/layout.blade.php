@@ -18,6 +18,9 @@
 
     </head>
     <body class="font-sans antialiased">
+
+        <x-navbar/>
+
         <div class="container">
 
             @session('message')
