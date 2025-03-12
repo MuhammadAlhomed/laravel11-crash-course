@@ -1,4 +1,11 @@
 @props([
     'for',
     ])
-<label for={{$for}} {{$attributes->merge(['class' => 'input-label']) }} {{$attributes}}>{{$slot}}</label>
+<label 
+    {{$attributes->merge(['class' => 'input-label']) }} 
+    for={{$for}} 
+    {{$attributes}}
+    >
+    
+    {{$slot}}
+</label>

@@ -2,11 +2,11 @@
     <div class="vh-100 d-flex justify-content-center align-items-sm-center"> 
         <div class="col-md-4 card p-4">
             <h1 class="h1 justify-text-center">Login</h1>
-            <form action="/register" method="post">
+            <form action="{{route('auth.login')}}" method="post">
                 @csrf
                 <div class='mb-3'>
                     <x-form-label for='email'>Email</x-form-label>
-                    <x-form-input name='email' type='text' required/>
+                    <x-form-input name='email' type='text' value="{{ old('email') }}" required/>
                 </div>
                 <div class='mb-3'>
                     <x-form-label for='password'>Password</x-form-label>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-between align-items-center">
-                        <div>Don't have an Account? <a href="/register">Join us!</a></div>
+                        <div>Don't have an Account? <a href="{{ route('auth.register') }}">Join us!</a></div>
                         <button type="submit"class="btn btn-primary">Login</button>
                     </div>
                 </div>
