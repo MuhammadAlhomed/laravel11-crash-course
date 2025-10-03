@@ -1,10 +1,10 @@
 <nav class="navbar navbar-light bg-white border-bottom shadow-sm justify-content-between px-2">
-    <a class="navbar-brand">{{config('app.name')}}</a>
+    <a class="navbar-brand" href='{{ route('note.index') }}'><h3 class="m-0">{{config('app.name')}}</h3></a>
 
     {{-- AUTH --}}
     @auth
         <div class="d-flex gap-1">
-            <h3>Welcome {{auth()->user()->username}}!</h3>
+            <h3 class="m-0">Welcome {{auth()->user()->username}}!</h3>
             <form action="{{route('auth.logout')}}" method="post" class="form-inline">
                 @csrf
                 <button class="btn btn-primary" type="submit">Logout</button>
