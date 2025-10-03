@@ -23,7 +23,7 @@
                             />
                             <label class="form-check-label" for="remember">Remember Me</label>
                         </div>
-                        <a href="#">I Forgot my Password</a>
+                        <a href="{{ route('auth.forget-password') }}">I Forgot my Password</a>
                     </div>
                 </div>
                 <div class="">
