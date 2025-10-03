@@ -21,7 +21,7 @@
 
         <x-navbar/>
 
-        <div class="container mt-2">
+        <div class="container py-2">
 
             @session('message')
                 <div class="alert alert-{{session("message_type") ?? 'success'}}" role="alert">

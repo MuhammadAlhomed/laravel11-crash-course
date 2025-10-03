@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="vh-100 d-flex justify-content-center align-items-sm-center">
-        <div class="col-md-4 card p-4 bg-white shadow">
+    <div class="h-100 d-flex justify-content-center align-items-sm-center">
+        <div class="col-md-6 col-xl-5 card p-4 bg-white shadow">
             <h1 class="h1 justify-text-center">Login</h1>
             <form action="{{route('auth.login')}}" method="post">
                 @csrf
