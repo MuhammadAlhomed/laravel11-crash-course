@@ -1,6 +1,6 @@
 <x-layout>
     <div class="vh-100 d-flex justify-content-center align-items-sm-center">
-        <div class="col-md-4 card p-4">
+        <div class="col-md-4 card p-4 bg-white shadow">
             <h1 class="h1 justify-text-center">Register new account</h1>
             <form action="{{route('auth.register')}}" method="post">
                 @csrf

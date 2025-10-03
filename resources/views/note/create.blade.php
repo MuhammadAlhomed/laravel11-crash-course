@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="card">
+    <div class="card bg-white">
         <div class="card-body">
             <h1>New Note</h1>
             <form action="{{route('note.store')}}" method="post">
@@ -7,7 +7,7 @@
 
                 <label for="content">Note text</label>
                 <div id="editor">
-                    
+
                 </div>
 
                 <div class="d-flex justify-content-end gap-1 mt-2">

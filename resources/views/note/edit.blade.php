@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="card">
+    <div class="card bg-white">
         <div class="card-body">
             <h1>Note: {{$note->created_at}}</h1>
             <form action="{{route('note.update', $note)}}" method="post">
@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end gap-1 mt-2">
-                    <a href="{{route('note.index')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{route('note.index')}}" class="btn btn-secondary">Cancel</a>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>

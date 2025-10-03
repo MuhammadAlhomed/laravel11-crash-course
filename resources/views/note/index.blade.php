@@ -4,10 +4,10 @@
     @foreach ($notes as $note)
         <div class="my-1">
             <a href="{{route('note.show', $note)}}"></a>
-            <div class="card">
+            <div class="card bg-white">
                 <div class="card-body">
                     <div class="card-text">
-                        {!! Str::words($note->content, 100) !!}
+                        {!!  Str::words($note->content, 100) !!}
                     </div>
                     <div class="d-flex justify-content-end gap-1">
                         <a href={{route('note.show', $note)}} class="btn btn-primary">View</a>

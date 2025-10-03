@@ -1,6 +1,6 @@
 <x-layout>
     <a href={{route('note.index')}} class="btn btn-primary">Back</a>
-    <div class="card my-2">
+    <div class="card bg-white my-2">
         <div class="card-body">
             <h1>Note: {{$note->created_at}}</h1>
             <p class="card-text">

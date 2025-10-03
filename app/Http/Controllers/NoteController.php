@@ -13,7 +13,7 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::orderByDesc('created_at')->paginate(10);
-        
+
         return view('note.index', ['notes' => $notes,]);
     }
 
@@ -33,12 +33,12 @@ class NoteController extends Controller
         $data = $request->validate([
             'content' => ['required', 'string'],
         ]);
-        
+
         $data['user_id'] = 1;
 
         $note = Note::create($data);
 
-        return to_route('note.index')->with('message', 'Note was created')->with('message_type', 'success');
+        return to_route('note.index')->with('message', 'Note was created successfully')->with('message_type', 'success');
     }
 
     /**
@@ -65,11 +65,11 @@ class NoteController extends Controller
         $data = $request->validate([
             'content' => ['required', 'string'],
         ]);
-        
-        
+
+
         $note->update($data);
 
-        return to_route('note.index')->with('message', 'Note was updated')->with('message_type', 'success');
+        return to_route('note.index')->with('message', 'Note was updated successfully')->with('message_type', 'success');
     }
 
     /**
@@ -79,6 +79,6 @@ class NoteController extends Controller
     {
         $note->delete();
 
-        return to_route('note.index')->with('message', 'Note was deleted')->with('message_type', 'success');
+        return to_route('note.index')->with('message', 'Note was deleted successfully')->with('message_type', 'success');
     }
 }
