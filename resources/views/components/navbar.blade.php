@@ -6,7 +6,7 @@
         <div class="d-flex flex-row-reverse align-items-center gap-3">
             <form action="{{route('auth.logout')}}" method="post" class="form-inline">
                 @csrf
-                <button class="btn btn-primary" type="submit">Logout</button>
+                <button class="btn btn-primary d-inline-flex align-items-center gap-1" type="submit"><i data-feather="log-out"></i> Logout</button>
             </form>
             <div class="dropdown open">
                 <h3 class="m-0 me-3">
@@ -27,8 +27,8 @@
     {{-- GUEST --}}
     @guest
         <div>
-            <a href="{{route('auth.register')}}" class="btn btn-primary">Register</a>
-            <a href="{{route('auth.login')}}" class="btn btn-primary">Login</a>
+            <a href="{{route('auth.register')}}" class="btn btn-primary d-inline-flex align-items-center"><i data-feather="user-plus" class="align-middle me-2"></i>Register</a>
+            <a href="{{route('auth.login')}}" class="btn btn-primary d-inline-flex align-items-center"><i data-feather="user" class="align-middle me-2"></i>Login</a>
         </div>
     @endguest
 </nav>

@@ -1,5 +1,6 @@
 <x-layout>
-    <a href={{route('note.create')}} class="btn btn-primary">New Note</a>
+    <a href={{route('note.create')}} class="btn btn-primary d-inline-flex align-items-center"><i data-feather="plus" class="align-middle me-2"></i>New Note</a>
+
     <div class="my-3">
     @foreach ($notes as $note)
         <div class="my-3">
@@ -14,17 +15,17 @@
                     <div class="d-flex align-items-center">
                         <div class="col">
                             <p class=" m-0 text-secondary">
-                                <span class="fs-6">Posted {{ $note->created_at->DiffForHumans() }}</span> by <a href="#">User</a>
+                                <span class="fs-6">Posted {{ $note->created_at->DiffForHumans() }}</span> by <a href="{{ route('profile.show', $note->user_id) }}">{{ $note->user->username }}</a>
                             </p>
                         </div>
                         <div class="col">
                             <div class="col d-flex justify-content-end gap-1">
-                                <a href={{route('note.show', $note)}} class="btn btn-primary">View</a>
-                                <a href={{route('note.edit', $note)}} class="btn btn-secondary">Edit</a>
+                                <a href={{route('note.show', $note)}} class="btn btn-primary d-inline-flex align-items-center"><i data-feather="eye" class="align-middle me-2"></i>View</a>
+                                <a href={{route('note.edit', $note)}} class="btn btn-secondary d-inline-flex align-items-center"><i data-feather="edit" class="align-middle me-2"></i>Edit</a>
                                 <form action="{{route('note.destroy', $note)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button href={{route('note.destroy', $note)}} class="btn btn-danger">Delete</button>
+                                    <button href={{route('note.destroy', $note)}} class="btn btn-danger d-inline-flex align-items-center"><i data-feather="trash-2" class="align-middle me-2"></i>Delete</button>
                                 </form>
                             </div>
                         </div>

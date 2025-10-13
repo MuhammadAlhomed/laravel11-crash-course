@@ -12,8 +12,8 @@
                 </div>
 
                 <div class="d-flex justify-content-end gap-1 mt-2">
-                    <a href="{{route('note.index')}}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{route('note.index')}}" class="btn btn-secondary d-inline-flex align-items-center"><i data-feather="arrow-left" class="align-middle me-2"></i>Cancel</a>
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center"><i data-feather="plus" class="align-middle me-2"></i>Create</button>
                 </div>
             </form>
             <script>

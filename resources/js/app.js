@@ -1,6 +1,8 @@
 import './bootstrap';
 import Quill from 'quill';
 import 'quill/dist/quill.core.css'
+import * as feather from 'feather-icons';
+
 
 const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
@@ -23,9 +25,19 @@ const toolbarOptions = [
     ['clean']                                         // remove formatting button
 ];
 
-const quill = new Quill('#editor', {
-    modules: {
-        toolbar: toolbarOptions,
-    },
-    theme: 'snow',
-});
+const editorElement = document.querySelector('#editor')
+if(editorElement)
+{
+    const quill = new Quill('#editor', {
+        modules: {
+            toolbar: toolbarOptions,
+        },
+        theme: 'snow',
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded',() => {
+    console.log('Loaded');
+    feather.replace()
+})
