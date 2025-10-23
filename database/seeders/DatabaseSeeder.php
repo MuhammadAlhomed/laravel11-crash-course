@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        Note::factory(100)->create();
+        Note::factory(100)->create([
+            'user_id' => 1
+        ]);
     }
 }
