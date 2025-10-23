@@ -14,9 +14,9 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
-            $table->foreignId('user_id')->constrained('users');
-            $table->json('attachments')->default(new Expression('JSON_ARRAY()'));
+            $table->longText('content')->nullable();
+            $table->foreignId('user_id')->constrained('users')->noActionOnDelete();
+            $table->json('attachments')->default('[]');
             $table->timestamps();
         });
     }
