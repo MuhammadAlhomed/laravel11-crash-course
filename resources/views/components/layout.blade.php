@@ -10,11 +10,16 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+        @stack('styles')
+
         @vite([
             'resources/sass/app.scss',
             'resources/css/app.css',
             'resources/js/app.js',
         ])
+
+        @stack('scripts')
+
 
     </head>
     <body class="font-sans antialiased">
