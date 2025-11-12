@@ -17,6 +17,7 @@ class RegisterController extends Controller
     {
         $validated = request()->validate([
             'username' => ['required','string', 'unique:users'],
+            'name' => ['required', 'string', 'max:32'],
             'email' => ['required', 'email'],
             'password' => ['required', 'string', 'min:8' , 'confirmed'] // will be automatically hashed
         ]);

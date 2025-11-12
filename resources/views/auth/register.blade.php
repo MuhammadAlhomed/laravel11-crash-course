@@ -10,6 +10,8 @@
                         <span class="input-group-text">@</span>
                         <x-form-input name='username' type='text' placeholder='username' value="{{ old('username')}}" required/>
                     </div>
+                    <x-form-label for='name'>Name</x-form-label>
+                    <x-form-input name='name' type='text' placeholder='Name' value="{{ old('name')}}" required/>
                 </div>
                 <div class='mb-3'>
                     <x-form-label for='email'>Email</x-form-label>
