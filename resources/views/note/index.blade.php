@@ -15,7 +15,12 @@
                     <div class="d-flex align-items-center">
                         <div class="col">
                             <p class=" m-0 text-secondary">
-                                <span class="fs-6">Posted {{ $note->created_at->DiffForHumans() }}</span> by <a href="{{ route('profile.show', $note->user_id) }}">{{ $note->user->username }}</a>
+                                <span class="fs-6">Posted {{ $note->created_at->DiffForHumans() }}</span> by
+                                @if($note?->user)
+                                <a href="{{ route('profile.show', $note->user_id) }}">{{ $note->user->username }}</a>
+                                @else
+                                anonymous
+                                @endif
                             </p>
                         </div>
                         <div class="col">

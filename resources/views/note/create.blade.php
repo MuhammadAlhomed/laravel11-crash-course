@@ -2,7 +2,7 @@
     <div class="card bg-white">
         <div class="card-body">
             <h1>New Note</h1>
-            <form action="{{route('note.store')}}" method="post">
+            <form action="{{route('note.store')}}" id="noteForm" method="post">
                 @csrf
 
                 <label for="content">Note text</label>
@@ -16,7 +16,7 @@
                 </div>
             </form>
             <script>
-                form = document.querySelector('form');
+                form = document.querySelector('#noteForm');
                 form.addEventListener('submit', (event) => {
                     editorContent = document.querySelector('#editor .ql-editor');
 
@@ -26,7 +26,6 @@
                     node.setAttribute('name', 'content');
                     node.setAttribute('value', editorContent.innerHTML);
 
-                    console.log(node);
                     form.appendChild(node);
                 })
             </script>

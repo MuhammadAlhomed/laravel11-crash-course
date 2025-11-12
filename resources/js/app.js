@@ -38,6 +38,5 @@ if(editorElement)
 
 
 document.addEventListener('DOMContentLoaded',() => {
-    console.log('Loaded');
     feather.replace()
 })

@@ -8,14 +8,12 @@
                 @csrf
                 <button class="btn btn-primary d-inline-flex align-items-center gap-1" type="submit"><i data-feather="log-out"></i> Logout</button>
             </form>
-            <div class="dropdown open">
+            <div class="dropdown">
                 <h3 class="m-0 me-3">
                     <span class="text-muted fs-5">Welcome </span>
                     <span style="cursor: pointer" data-bs-toggle="dropdown" aria-expanded="false">{{auth()->user()->username}}!</span>
                     <div class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="userDropdown" >
-                        <a class="dropdown-item" href="{{ route('profile') }}">Edit profile</a>
-                        {{-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">After divider action</a> --}}
+                        <a class="dropdown-item" href="{{ route('profile.index') }}"><i data-feather="user" class="align-middle me-2"></i>Profile</a>
                     </div>
                 </h3>
 

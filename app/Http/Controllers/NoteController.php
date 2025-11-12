@@ -31,14 +31,14 @@ class NoteController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'content' => ['required', 'string'],
+            'content' => ['required', 'string', 'max:1024'],
         ]);
 
-        $data['user_id'] = 1;
+        $data['user_id'] = auth()->user()->id;
 
         $note = Note::create($data);
 
-        return to_route('note.index')->with('message', 'Note was created successfully')->with('message_type', 'success');
+        return redirect(route('note.index'))->with('message', 'Note was created successfully')->with('message_type', 'success');
     }
 
     /**
@@ -63,13 +63,13 @@ class NoteController extends Controller
     public function update(Request $request, Note $note)
     {
         $data = $request->validate([
-            'content' => ['required', 'string'],
+            'content' => ['required', 'string', 'max:1024'],
         ]);
 
 
         $note->update($data);
 
-        return to_route('note.index')->with('message', 'Note was updated successfully')->with('message_type', 'success');
+        return redirect(route('note.index'))->with('message', 'Note was updated successfully')->with('message_type', 'success');
     }
 
     /**
@@ -79,6 +79,6 @@ class NoteController extends Controller
     {
         $note->delete();
 
-        return to_route('note.index')->with('message', 'Note was deleted successfully')->with('message_type', 'success');
+        return redirect(route('note.index'))->with('message', 'Note was deleted successfully')->with('message_type', 'success');
     }
 }
