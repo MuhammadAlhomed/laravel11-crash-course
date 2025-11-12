@@ -27,8 +27,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        Note::factory(100)->create([
-            'user_id' => 1
-        ]);
+        $notes = Note::factory(100)->make();
+
+        $notes->each(function (Note $note, $key) {
+            $note->user_id = rand(0,1);
+            $note->save();
+        });
     }
 }
