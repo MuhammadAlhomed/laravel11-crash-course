@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\File;
+use Storage;
 
 class RegisterController extends Controller
 {
@@ -21,6 +23,9 @@ class RegisterController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required', 'string', 'min:8' , 'confirmed'] // will be automatically hashed
         ]);
+
+        // Give a default profile picture to user
+        $validated += ['avatar' => Storage::disk('public')->putFile('avatar',new File(storage_path('app/placeholders/profile_pic.png')))];
 
         // Create User
         $user = User::create($validated);
