@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -13,8 +14,9 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->longText('content');
-            $table->foreignId('user_id')->constrained('users');
+            $table->longText('content')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->json('attachments')->default('[]');
             $table->timestamps();
         });
     }

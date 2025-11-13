@@ -4,11 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{config('app.name')}}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+        @stack('styles')
 
         @vite([
             'resources/sass/app.scss',
@@ -16,12 +18,18 @@
             'resources/js/app.js',
         ])
 
+        @stack('scripts')
+
+
     </head>
     <body class="font-sans antialiased">
-        <div class="container">
+
+        <x-navbar/>
+
+        <div class="container py-2">
 
             @session('message')
-                <div class="alert alert-{{session("message_type")}}" role="alert">
+                <div class="alert alert-{{session("message_type") ?? 'success'}}" role="alert">
                     {{session('message')}}
                 </div>
             @endsession
