@@ -22,6 +22,9 @@ class NoteController extends Controller
      */
     public function create()
     {
+        if(auth()->guest())
+            abort(403);
+
         return view('note.create');
     }
 
@@ -30,11 +33,14 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->guest())
+            abort(403);
+
         $data = $request->validate([
             'content' => ['required', 'string', 'max:1024'],
         ]);
 
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = auth()->user()?->id;
 
         $note = Note::create($data);
 
@@ -54,6 +60,9 @@ class NoteController extends Controller
      */
     public function edit(Note $note)
     {
+        if(auth()->user()?->id !== $note->user_id)
+            abort(403);
+
         return view('note.edit', ['note' => $note,]);
     }
 
@@ -62,6 +71,9 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
+        if(auth()->user()?->id !== $note->user_id)
+            abort(403);
+
         $data = $request->validate([
             'content' => ['required', 'string', 'max:1024'],
         ]);
@@ -77,6 +89,9 @@ class NoteController extends Controller
      */
     public function destroy(Note $note)
     {
+        if(auth()->user()?->id !== $note->user_id)
+            abort(403);
+
         $note->delete();
 
         return redirect(route('note.index'))->with('message', 'Note was deleted successfully')->with('message_type', 'success');
