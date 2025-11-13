@@ -40,3 +40,13 @@ if(editorElement)
 document.addEventListener('DOMContentLoaded',() => {
     feather.replace()
 })
+
+window.Echo.channel('messages').listen('NewNoteEvent', (e) => {
+    const notesFeed =  document.getElementById('notesFeed');
+
+    if(!notesFeed)
+        return;
+
+    window.location.reload();
+
+})

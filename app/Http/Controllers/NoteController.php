@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewNoteEvent;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
@@ -43,6 +44,8 @@ class NoteController extends Controller
         $data['user_id'] = auth()->user()?->id;
 
         $note = Note::create($data);
+
+        event(new NewNoteEvent());
 
         return redirect(route('note.index'))->with('message', 'Note was created successfully')->with('message_type', 'success');
     }
