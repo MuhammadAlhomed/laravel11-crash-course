@@ -13,8 +13,13 @@ if [ ! -f .env ]; then
   fi
 fi
 
+echo "Loading environment variables from .env file..."
+set -a # automatically export all variables
+source .env
+set +a
+
 # Generate APP_KEY if missing
-if ! grep -q "^APP_KEY=base64:" .env; then
+if [ -z "$APP_KEY" ]; then
   echo "Generating APP_KEY..."
   php artisan key:generate --force
 fi
@@ -29,10 +34,7 @@ if [ ! -f "$DB_FILE" ]; then
 fi
 
 echo "Ensuring Laravel cache directories exist..."
-mkdir -p \
-  storage/framework/cache \
-  storage/framework/sessions \
-  storage/framework/views
+mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views
 
 # Storage link
 if [ ! -L public/storage ]; then
@@ -40,7 +42,7 @@ if [ ! -L public/storage ]; then
   php artisan storage:link || true
 fi
 
-# Optional migrations (explicit opt-in)
+# Optional migrations and optimizations
 if [ "$RUN_MIGRATIONS" = "true" ]; then
   echo "Running optimizations..."
   php artisan optimize:clear

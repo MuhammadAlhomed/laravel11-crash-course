@@ -1,0 +1,85 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: laravel-app
+  namespace: laravel
+  annotations:
+    image.openshift.io/triggers: |
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "laravel-app:main",
+            "namespace": "laravel"
+          },
+          "fieldPath": "spec.template.spec.containers[?(@.name==\"laravel-app\")].image"
+        }
+      ]
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-app
+  template:
+    metadata:
+      labels:
+        app: laravel-app
+    spec:
+      volumes:
+        - name: env
+          configMap:
+            name: laravel-env
+            defaultMode: 420
+        - name: storage
+          persistentVolumeClaim:
+            claimName: pvc-laravel-storage
+        - name: bootstrap-cache
+          emptyDir: {}
+      containers:
+        - resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          name: laravel-app
+          env:
+            - name: RUN_MIGRATIONS
+              value: 'true'
+            - name: APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: laravel-env-secrets
+                  key: APP_KEY
+            - name: VITE_REVERB_APP_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: laravel-env-secrets
+                  key: VITE_REVERB_APP_KEY
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 6001
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: env
+              mountPath: /var/www/html/.env.custom
+              subPath: .env
+            - name: storage
+              mountPath: /var/www/html/storage
+            - name: bootstrap-cache
+              mountPath: /var/www/html/bootstrap/cache
+          terminationMessagePolicy: File
+          image: 'image-registry.openshift-image-registry.svc:5000/laravel/laravel-app:main'
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  revisionHistoryLimit: 2

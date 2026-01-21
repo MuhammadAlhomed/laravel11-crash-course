@@ -1,0 +1,42 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: laravel-app-main-build
+  namespace: laravel
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      namespace: laravel
+      name: 'laravel-app:main'
+  successfulBuildsHistoryLimit: 2
+  failedBuildsHistoryLimit: 2
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+      buildArgs:
+        - name: VITE_REVERB_APP_KEY
+          valueFrom:
+            secretKeyRef:
+              name: laravel-env-secrets
+              key: VITE_REVERB_APP_KEY
+        - name: VITE_REVERB_HOST
+          value: laravel-reverb.apps.openshift.lan
+        - name: VITE_REVERB_PORT
+          value: '443'
+        - name: VITE_REVERB_SCHEME
+          value: https
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/MuhammadAlhomed/laravel11-crash-course'
+      ref: main
+    contextDir: /
+  triggers:
+    - type: ConfigChange
+    - type: GitHub
+      github:
+        secretReference:
+          name: build-laravel-app
+  runPolicy: Serial
