@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: laravel-service
+  namespace: laravel
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: ws
+      protocol: TCP
+      port: 6001
+      targetPort: 6001
+  type: ClusterIP
+  selector:
+    app: laravel-app

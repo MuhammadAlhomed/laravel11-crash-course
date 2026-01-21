@@ -1,0 +1,35 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: laravel-app
+  namespace: laravel
+spec:
+  host: laravel-app.apps.openshift.lan
+  to:
+    kind: Service
+    name: laravel-service
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: laravel-reverb
+  namespace: laravel
+spec:
+  host: laravel-reverb.apps.openshift.lan
+  to:
+    kind: Service
+    name: laravel-service
+    weight: 100
+  port:
+    targetPort: 6001
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  wildcardPolicy: None
