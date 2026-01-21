@@ -30,7 +30,7 @@ RUN composer install --no-dev --prefer-dist --optimize-autoloader \
     && npm install && npm run build
 
 # Permissions OpenShift
-RUN chown -R 0:0 /var/www/html && chmod -R g+rwx /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R 0:0 /var/www/html && chmod -R g+rwx /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public
 
 # =========================
 # Stage 2 — Runtime
